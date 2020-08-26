@@ -9,16 +9,13 @@ from flask import render_template, send_from_directory, url_for
 from flask import request
 from bs4 import BeautifulSoup
 import requests
+from konlpy.tag import Kkma
 
 
 app = Flask(__name__)
 
-
-def getText(body):
-	tag = re.compile('<.*?>')
-	text = re.sub(tag,' ', body)
-	cleanText = re.sub('[^\w\s]', ' ',text)
-	return cleanText
+def hfilter(s):
+	return re.sub(u'[^ \.\,\?\!\u3130-\u318f\uac00-\ud7a3]+','',s)
 
 @app.route('/')
 def start():
@@ -27,23 +24,23 @@ def start():
 @app.route('/crawling', methods = ['POST'])
 def crawling():
 	if request.method == 'POST':
-		word = {}
 		
+		kkma = Kkma()		
+		word_d = {}
 		url = request.form['url']
-		#str = url	
-		res = requests.get(url)
-		soup = BeautifulSoup(res.content, "html.parser")
-		body = soup.find('body').text
-		text = getText(body).lower()		
-		text = word_tokenize(text)
-		
-		for i in text:
-			if i not in stopwords.words("english"):
-				if i not in word.keys:
-					word[i]=0
-				word[i]+=1;
-				
-		sortList = sorted(word.items(), key = lambda x:x[1], reverse = True)		
+		req = requests.get(url)
+		html = req.text
+		soup = BeautifulSoup(html, 'html.parser')
+		my_para = soup.select('#articleBodyContents')
+		for para in my_para:
+			hsent = hfilter(para.getText())
+			wlist = kkma.pos(hsent)
+			for w in wlist:
+				if w[1] == "NNG":
+					if w[0] not in word_d:
+						word_d[w[0]]=0
+					word_d[w[0]] += 1			
+		sortedList = sorted(word_d.items(), key = lambda x:x[1], reverse = True)		
 		return render_template('crawling.html', list = sortedList)
 
 # main
