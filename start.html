@@ -1,18 +1,22 @@
 <html>
-<head></head>
-	<body>
-	<div class="flexbox">
-  <div class="search">
-    <h1>바쁘다, 바빠. 현대 사회</h1>
-    <h4>주소를 입력하고, 버튼을 클릭하세요.</h4>
-    <div>
-	<form method="POST" action="/crawling"  enctype="multipart/form-data" >
-        <input name = "url" type="text" placeholder="Search . . ." required>
-     
-      <button type="submit">버튼</button>
-	</form>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../Project/static/main.css">
+</head>
+
+<body class="BODY_margin">
+  <div class="flexbox">
+    <div class="search">
+      <h1 class="START_head">바쁘다, 바빠. 현대 사회</h1>
+      <h4 class="START_text">주소를 입력하고, 버튼을 클릭하세요.</h4>
+      <div class="START_input">
+        <form method="POST" action="/crawling" enctype="multipart/form-data">
+          <input name="url" type="text" placeholder="Search . . ." required>
+          <button type="submit">버튼</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </body>
+
 </html>
