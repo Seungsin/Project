@@ -32,7 +32,6 @@
     margin-bottom: 10px;
     font-weight: lighter;
     font-family: 'Cafe';
-
 }
 
 .START_text {
@@ -49,6 +48,25 @@
 .START_input {
     height:30px;
     width:400px
+}
+
+.CRAWL_head {
+  font-size: 60px;
+  text-align: center;
+  color: rgb(255,255,255);
+  margin-top: 200px;
+  margin-bottom: 60px;
+  font-weight: lighter;
+  font-family: 'Cafe';
+}
+
+.CRAWL_result {
+  font-size: 30px;
+  background-color:rgba(123, 158, 255, 0.4);
+  color: white;
+ 
+  border-radius: 10px;
+  text-align: center;
 }
 
 /*버튼*/
@@ -135,6 +153,13 @@ button:after {
     height:100%;
     position: absolute; /*다른 요소들 위로 겹쳐질 수 있게함*/
    
+}
+.bg_dark{
+  background-color:rgba(0, 0, 0, 0.8); /*살짝 투명한 검정으로 배경색*/
+  width:100%;
+  height:100%;
+  position: absolute; /*다른 요소들 위로 겹쳐질 수 있게함*/
+ 
 } 
 section{
     background-size:cover;

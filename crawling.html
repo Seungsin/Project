@@ -1,9 +1,21 @@
 <html>
 
-<body>
-    <h1>HashTage</h1>
-	{% for i in range(0,3) %}
-		#{{list[i][0]}} 
-	{% endfor %}
+<head>
+	<link rel="stylesheet" type="text/css" href="../Project/static/main.css">
+	<script src="../Project/static/main.js"></script>
+</head>
+
+<body class="BODY_cover" background="https://cdn.pixabay.com/photo/2015/03/26/10/56/london-692137_1280.jpg">
+	<div class="bg_dark">
+		<h1 class="CRAWL_head">HashTage</h1>
+		<div style="text-align: center;">
+			{% for i in range(0,3) %}
+			<a class="CRAWL_result">
+				#{{list[i][0]}}
+			</a>
+			{% endfor %}
+		</div>
+	</div>
 </body>
+
 </html>
